@@ -113,7 +113,58 @@ We will take the installation steps and expand them to other environments.
 Make new environment. We start with github actions.
 You can take a look at some example of deploy process
 * click Actions button.
-* click Build projects with Make
+* click Pylint under continuous Integration.
+* click configure, start commit and commit.
+
+## Build
+There are 2 steps in this `build.yml` install step and lint step.
+In codespaces or your favourite environment.
+* Enter the github workflow `cd .github/workflows`
+* We renamed the file to build. `mv pylint.yml build.yml` or `git mv pylint.yml build.yml`
+* In `build.yml` change name: to `Build`
+* We already have a Makefile,therefore in name:`install dependencies`,
+  * Swap the run: to `make install` e.g. 
+  before
+  ```yml
+      - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pylint
+  ```
+  
+  after
+  ```yml
+      - name: Install dependencies
+      run: |
+        make install
+  ```
+  
+* copy pylint from `build.yml` to Makefile lint:
+  * copy `pylint $(git ls-files '*.py')`
+  ```yml
+      - name: Analysing the code with pylint
+      run: |
+        pylint $(git ls-files '*.py')
+  ```
+  * To Makefile
+  from this
+
+```Makefile
+  lint:
+	    pylint --disable=R,C hello.py
+```
+
+  to this
+  ```Makefile
+  lint:
+	    pylint --disable=R,C $$(git ls-files '*.py')
+  ```
+  
+## Test the lint
+
+using `hello.py`, write a function using `make lint`
+
+
 ## References
 
 * [Initialize Makefile](https://github.com/noahgift/github-actions-pytest/blob/master/Makefile)
