@@ -97,7 +97,23 @@ git commit -m "message"
 git push
 ```
 
+* Setup the Build system to actually get the installation step running.
 
+**Build system e.g Github Actions:**
+
+* **Cloud Native Approach**
+* Test installations process (used codespaces)
+  * run the Makefile commands
+* Test in many different environments:
+  * AWS Cloud9
+  * GCP
+  * Azure
+
+We will take the installation steps and expand them to other environments.
+Make new environment. We start with github actions.
+You can take a look at some example of deploy process
+* click Actions button.
+* click Build projects with Make
 ## References
 
 * [Initialize Makefile](https://github.com/noahgift/github-actions-pytest/blob/master/Makefile)
