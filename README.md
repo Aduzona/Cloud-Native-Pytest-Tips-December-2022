@@ -99,6 +99,8 @@ git push
 
 * Setup the Build system to actually get the installation step running.
 
+## Build
+
 **Build system e.g Github Actions:**
 
 * **Cloud Native Approach**
@@ -110,13 +112,15 @@ git push
   * Azure
 
 We will take the installation steps and expand them to other environments.
-Make new environment. We start with github actions.
+Make new build system. We start with github actions.
 You can take a look at some example of deploy process
+
 * click Actions button.
 * click Pylint under continuous Integration.
 * click configure, start commit and commit.
 
-## Build
+
+
 There are 2 steps in this `build.yml` install step and lint step.
 In codespaces or your favourite environment.
 * Enter the github workflow `cd .github/workflows`
@@ -126,7 +130,7 @@ In codespaces or your favourite environment.
   * Swap the run: to `make install` e.g. 
   before
   ```yml
-      - name: Install dependencies
+    - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
         pip install pylint
@@ -134,32 +138,31 @@ In codespaces or your favourite environment.
   
   after
   ```yml
-      - name: Install dependencies
+    - name: Install dependencies
       run: |
         make install
   ```
   
 * copy pylint from `build.yml` to Makefile lint:
-  * copy `pylint $(git ls-files '*.py')`
+  copy `pylint $(git ls-files '*.py')`
   ```yml
-      - name: Analysing the code with pylint
+    - name: Analysing the code with pylint
       run: |
         pylint $(git ls-files '*.py')
   ```
-  * To Makefile
-  from this
-
-```Makefile
-  lint:
-	    pylint --disable=R,C hello.py
-```
-
-  to this
+  to this and add extra `$` sign
   ```Makefile
   lint:
 	    pylint --disable=R,C $$(git ls-files '*.py')
   ```
-  
+  * Change `build.yml` under pylint section to `make lint`
+    ```yml
+    - name: Analysing the code with pylint
+      run: |
+        make lint
+    ```
+We have now kept all the complexity abstracted to the Makefile
+
 ## Test the lint
 
 using `hello.py`, write a function using `make lint`
