@@ -170,6 +170,50 @@ We have now kept all the complexity abstracted to the Makefile
 using `hello.py`, write a function using `make lint`
 
 
+## Testing for Multi-Cloud
+
+* AWS CloudShell
+First activate ssh key see [SSH](https://github.com/Aduzona/python-for-devops-december-2022)
+```sh
+
+git clone git@github.com:Aduzona/Cloud-Native-Pytest-Tips-December-2022.git
+python3 -m venv ~/.Cloud-Native-Pytest-Tips-December-2022
+source ~/.Cloud-Native-Pytest-Tips-December-2022/bin/activate
+which python
+cd Cloud-Native-Pytest-Tips-December-2022
+git pull
+make install
+make lint
+```
+
+setup testing for the python version we are on, e.g. python 3.7
+```sh
+vim .git
+vim .github/workflows/build.yml
+```
+now add another python version to `build.yml`
+```yml
+matrix:
+  python-version:["3.7","3.8","3.9","3.10"]
+```
+```sh
+git status
+git add .github/workflows/build.yml
+git commit -m "adding 3.7 python"
+```
+if asked for congiguration
+```sh
+git config --global user.email "****@gmail.com"
+git config --global user.name "Diego Arinze Uchendu"
+git commit -m "adding 3.7 python"
+git push
+```
+
+* Cloud9
+* n
+
+### AWS Cloud9
+
 ## References
 
 * [Initialize Makefile](https://github.com/noahgift/github-actions-pytest/blob/master/Makefile)
