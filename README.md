@@ -1,3 +1,5 @@
+[![Build](https://github.com/Aduzona/Cloud-Native-Pytest-Tips-December-2022/actions/workflows/build.yml/badge.svg)](https://github.com/Aduzona/Cloud-Native-Pytest-Tips-December-2022/actions/workflows/build.yml)
+
 # Cloud-Native-Pytest-Tips-December-2022
 
 Pytest repo, covering best practices
