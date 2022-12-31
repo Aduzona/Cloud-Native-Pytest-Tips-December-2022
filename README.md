@@ -222,6 +222,27 @@ password: get your personal access token
 
 ### AWS Cloud9
 
+using https
+
+```sh
+git clone https://github.com/Aduzona/Cloud-Native-Pytest-Tips-December-2022.git
+cd Cloud-Native-Pytest-Tips-December-2022
+python3 -m venv ~/.venv
+vim ~/.bashrc
+```
+
+inside the vim, press i to insert, :q to quit, :wq to save and quite
+```
+#source virtualenv
+source ~/.venv/bin/activate
+```
+
+* open new terminal
+* Type `which python` here it is python3
+* Type `python3` to see the python version you are working with, i worked with `Python 3.7.15` then type `exit()`
+* change directory to `Cloud-Native-Pytest-Tips-December-2022` and type `make install`
+* run `make lint`.
+
 ## References
 
 * [Initialize Makefile](https://github.com/noahgift/github-actions-pytest/blob/master/Makefile)
