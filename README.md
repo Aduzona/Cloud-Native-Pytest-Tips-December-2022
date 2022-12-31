@@ -173,7 +173,9 @@ using `hello.py`, write a function using `make lint`
 ## Testing for Multi-Cloud
 
 * AWS CloudShell
-First activate ssh key see [SSH](https://github.com/Aduzona/python-for-devops-december-2022)
+	Cloudshell is free so this is a cost effective  way of configuring your app for deployment
+	* First activate ssh key see [SSH](https://github.com/Aduzona/python-for-devops-december-2022) 
+	* Or Use https but use Personal access tokens (classic)(PAT) as password.(you can create PAT in github settings)
 ```sh
 
 git clone git@github.com:Aduzona/Cloud-Native-Pytest-Tips-December-2022.git
@@ -204,13 +206,19 @@ git commit -m "adding 3.7 python"
 if asked for congiguration
 ```sh
 git config --global user.email "****@gmail.com"
-git config --global user.name "Diego Arinze Uchendu"
+git config --global user.name "aduzona"
 git commit -m "adding 3.7 python"
 git push
 ```
 
+if you use https
+
+```
+username: aduzona
+password: get your personal access token
+```
 * Cloud9
-* n
+
 
 ### AWS Cloud9
 
