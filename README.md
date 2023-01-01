@@ -242,6 +242,44 @@ source ~/.venv/bin/activate
 * Type `python3` to see the python version you are working with, i worked with `Python 3.7.15` then type `exit()`
 * change directory to `Cloud-Native-Pytest-Tips-December-2022` and type `make install`
 * run `make lint`.
+* Lets create a library `mkdir mylib`
+* create an init file `touch mylib/__init__`, so that python interpreter will be able to import that.
+move the `hello.py` into library structure. so create a fruit routine. 
+
+**library structure**
+
+mylib
+- __init__.py
+- fruits.py
+hello.py
+
+in `hello.py`:
+
+turn the script into command line tool or at least the begining of a command line tool`#!/usr/bin/env python` makes it executable by d
+```py
+
+#!/usr/bin/env python
+```
+```py
+from mylib.fruity import random_fruit
+
+
+if __name__=="__main__":
+    print(random_fruit())# only run this if it is run as a script.
+
+```
+
+* make hello.py executable by doing `chmod +x hello.py`
+* Just run `./hello.py` to execute.
+* 
+
+**Testing**
+
+We now have a simple script and a library, so we can begin the test. do we want to test directory or build things out as a script.
+in Pytest, you can run a test:
+* in a module `pytest test_mod.py`
+* in a directory `pytest testing/`
+* by keyword expressions `pytest -k "MyClass and not method`
 
 ## References
 
