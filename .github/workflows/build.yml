@@ -21,3 +21,6 @@ jobs:
     - name: Analysing the code with pylint
       run: |
         make lint
+    - name: Testing Python
+      run: |
+        make test

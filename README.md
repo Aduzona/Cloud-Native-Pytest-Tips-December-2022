@@ -280,6 +280,41 @@ in Pytest, you can run a test:
 * in a module `pytest test_mod.py`
 * in a directory `pytest testing/`
 * by keyword expressions `pytest -k "MyClass and not method`
+ 
+
+* Using `git mv test_hello.py test_fruity.py` Rename `test_hello.py` to `test_fruity.py` this is to match `mylib` library file `fruity.py`
+* Add a test to `test_fruity.py` to test `fruity.py`
+
+```py
+from mylib.fruity import random_fruit
+
+def test_random_fruit():
+    assert "apple" or"banana" or "cherry" in random_fruit()
+
+```
+* Add a pytest-cov to requirements.py  first check version `pip freeze | grep pytest-cov`, then add to requirements.py.
+* change the Makefile
+
+From
+  ```
+  test:
+	python -m pytest -vv test_fruity.py
+  ```
+  
+To
+```
+test:
+	python -m pytest -vv --cov=mylib test_fruity.py
+```
+* add another step to `github/workflows - build.yml` so that the test coverage will be better.
+
+```yml
+
+    - name: Testing Python
+      run: |
+        make test
+
+```
 
 ## References
 
