@@ -373,7 +373,17 @@ if __name__ == '__main__':
 * To run a specific test within a module: `python -m pytest -vv testing/test_fruity.py::test_random_fruit`
   * Inside `test_fruity.py` there is `test_random_fruit`
 * Run tests by marker expressions: https://docs.pytest.org/en/7.1.x/how-to/mark.html#mark
+
+Add to Makefile:
 * Profile tests: `pytest --durations=10 --durations-min=1.0`
+In the Makefile
+```Makefile
+profile-test-code:
+	python -m pytest -vv --durations=10 --durations-min=1.0
+```
+This means get a list of 10 test durations over 1 seconds long
+Thus, pytest will not show test durations that are <1 seconds.
+
 * Skipping `@pytest.mark.skip(reason="no way of currently testing this")`
 * [Checkout Fixtures here](https://paiml.com/docs/home/books/testing-in-python/chapter07-pytest-fixtures/)
 
