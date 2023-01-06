@@ -163,6 +163,12 @@ In codespaces or your favourite environment.
       run: |
         make lint
     ```
+* Change to `make install` in the `build.yml`
+  ```yml
+    - name: Install dependencies
+      run: |
+        make install
+  ```
 We have now kept all the complexity abstracted to the Makefile
 
 ## Test the lint
