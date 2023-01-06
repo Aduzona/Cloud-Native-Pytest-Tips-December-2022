@@ -363,6 +363,20 @@ if __name__ == '__main__':
   * `./hello.py`equivalent to `python hello.py`
 * you can change arguments `./hello.py --term=Warrior`
 
+
+## Using Pytest
+
+* Use libbrary style: `python -m pytest -vv --cov=mylib testing/`
+* Run tests by keyword expressions: `python -m pytest -vv -k "search"`, 
+  * This allows to test on only the library we are working on if we have a hugh code base
+  * Testing for only fruit in `fruity.py` is done like this `python -m pytest -vv -k "fruit"`
+* To run a specific test within a module: `python -m pytest -vv testing/test_fruity.py::test_random_fruit`
+  * Inside `test_fruity.py` there is `test_random_fruit`
+* Run tests by marker expressions: https://docs.pytest.org/en/7.1.x/how-to/mark.html#mark
+* Profile tests: `pytest --durations=10 --durations-min=1.0`
+* Skipping `@pytest.mark.skip(reason="no way of currently testing this")`
+* [Checkout Fixtures here](https://paiml.com/docs/home/books/testing-in-python/chapter07-pytest-fixtures/)
+
 ## References
 
 * [Initialize Makefile](https://github.com/noahgift/github-actions-pytest/blob/master/Makefile)
