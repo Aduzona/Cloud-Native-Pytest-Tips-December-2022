@@ -322,6 +322,48 @@ test:
 
 ```
 
+* Create a testing directory `mkdir testing`
+* move `test_fruity.py` to testing directory `git mv test_fruity.py testing/`
+* change the way I run my code, to reflect this changes in Makefile
+
+```Makefile
+test:
+	python -m pytest -vv --cov=mylib testing/
+
+```
+Now anything I put in the directory testing, it will be able to run by simply running `make test`
+
+**Testing with Wikipedia library**
+
+* Add wikipedia to `requirements.txt` and run `make install`
+* Also add `ipython` to `requirements.txt` and run `make install` work well with libraries that  has interactive style.
+  * `ipython` allows me to prototype things quickly.
+  * `pip freeze | grep ipython` to get the version of ipython installed and add it to `requirements.py`
+  * 
+* Create a new library file in `mylib` with `touch mylib/wiki.py` and test file in `testing` with `touch testing/test_wiki.py`
+
+**Using Python fire**
+
+This can help us build test quicker, add `fire` to the requirements.py, make install, then run `pip freeze | grep fire` to extract the library version,
+update the `requirements.txt`.
+* rewrite `hello.py`:
+
+```py
+#!/usr/bin/env python
+
+from mylib.wiki import search_wiki
+
+import fire
+if __name__ == '__main__':
+  fire.Fire(search_wiki)
+```
+
+
+* run `./hello.py` this is because, we added this part `#!/usr/bin/env python` in `hello.py`
+  * `./hello.py`equivalent to `python hello.py`
+* you can change arguments `./hello.py --term=Warrior`
+
 ## References
 
 * [Initialize Makefile](https://github.com/noahgift/github-actions-pytest/blob/master/Makefile)
+* [Python fire](https://github.com/google/python-fire)
