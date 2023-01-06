@@ -3,5 +3,5 @@
 from mylib.fruity import random_fruit
 
 
-if __name__=="__main__":
-    print(random_fruit())# only run this if it is run as a script.
+if __name__ == "__main__":
+    print(random_fruit())  # only run this if it is run as a script.
